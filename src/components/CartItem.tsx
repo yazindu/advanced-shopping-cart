@@ -11,12 +11,12 @@ type CartItemProps = {
 export const CartItem = ({id, quantity}: CartItemProps) => {
     const {removeFromCart} = useShoppingCart()
     const item = storeItems.find(i => i.id === id)
-    if(item == null) return null
+    if (item == null) return null
     return (
         <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
             <img
                 src={item.imgUrl}
-                style={{width:"125px", height: "75px", objectFit:"cover"}}
+                style={{width: "125px", height: "75px", objectFit: "cover"}}
             />
             <div className="me-auto">
                 <div>
@@ -34,7 +34,7 @@ export const CartItem = ({id, quantity}: CartItemProps) => {
             <Button
                 variant="outline-danger"
                 size="sm"
-                onClick={()=>removeFromCart(item.id)}>
+                onClick={() => removeFromCart(item.id)}>
                 &times;
             </Button>
         </Stack>
