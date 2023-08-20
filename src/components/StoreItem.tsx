@@ -31,12 +31,12 @@ export const StoreItem = ({id, imgUrl, price, name}: StoreItemProps) => {
                         ? (<Button onClick={() => increaseCartQuantity(id)} className="w-100" >+ Add To Cart</Button>)
                         : <div className="d-flex align-items-center flex-column" style={{gap: ".5rem"}}>
                             <div className="d-flex align-items-center justify-content-center" style={{gap: ".5rem"}}>
-                                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
+                                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
                                 <div>
                                     <span className="fs-3"> {quantity} </span>
                                     in cart
                                 </div>
-                                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
+                                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
                             </div>
                             <Button onClick={() => removeFromCart(id)} variant="danger" size="sm">Remove</Button>
                         </div>

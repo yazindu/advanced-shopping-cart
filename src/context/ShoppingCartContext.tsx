@@ -1,5 +1,6 @@
 import {createContext, ReactNode, useContext, useState} from "react";
 import {ShoppingCart} from "../components/ShoppingCart.tsx";
+import {useLocalStorage} from "../hooks/useLocalStorage.ts";
 
 type ShoppingCartProviderProps = {
     children: ReactNode
@@ -29,7 +30,7 @@ export const useShoppingCart = () => { //Custom hook
 
 export function ShoppingCartProvider({children}: ShoppingCartProviderProps) { // provide portion : provider gives all the values and houses the code for rendering the shopping cart when we click the shopping cart button
     const [isOpen, setIsOpen] = useState(false)
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []) //Custom hook (replaced useState) to preserve state during a page reload
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0) //reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
 
     const openCart = () => setIsOpen(true)
