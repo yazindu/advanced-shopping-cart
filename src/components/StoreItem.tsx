@@ -8,9 +8,10 @@ type StoreItemProps = {
     name: string
     price: number
     imgUrl: string
+    count : number
 }
 
-export const StoreItem = ({id, imgUrl, price, name}: StoreItemProps) => {
+export const StoreItem = ({id, imgUrl, price, name, count}: StoreItemProps) => {
     const {getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} = useShoppingCart()
     const quantity = getItemQuantity(id);
     return (
@@ -21,6 +22,7 @@ export const StoreItem = ({id, imgUrl, price, name}: StoreItemProps) => {
                 height="200px"
                 style={{objectFit: "cover"}}
             />
+            <h3>{count}</h3>
             <Card.Body className="d-flex flex-column">
                 <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
                     <span className="fs-2">{name}</span>
